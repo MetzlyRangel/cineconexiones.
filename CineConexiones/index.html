@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050507">
+  <meta name="description" content="Explora actores y descubre sus conexiones en el cine.">
+  <title>CineConexiones</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="CineConexiones, inicio">
+      <span class="brand-icon" aria-hidden="true">✦</span>
+      Cine<span>Conexiones</span>
+    </a>
+    <p class="header-note">Las historias se conectan</p>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Explora el universo del cine</p>
+      <h1 id="page-title">Un actor te lleva a otro.</h1>
+      <p class="hero-copy">
+        Busca a tus intérpretes favoritos y descubre las películas y personas
+        que conectan sus historias.
+      </p>
+
+      <form id="searchForm" class="search-form" role="search">
+        <label class="sr-only" for="actorSearch">Nombre del actor o actriz</label>
+        <input
+          id="actorSearch"
+          name="actor"
+          type="search"
+          placeholder="Busca un actor o actriz..."
+          autocomplete="off"
+          required
+        >
+        <button type="submit">Buscar</button>
+      </form>
+      <p id="searchStatus" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="searchResultsSection" class="results-section" hidden>
+      <h2 class="section-title">Resultados de búsqueda</h2>
+      <div id="searchResults" class="people-grid"></div>
+    </section>
+
+    <section id="actorSection" class="actor-section" hidden aria-labelledby="actorName">
+      <div id="actorStatus" class="status" role="status" aria-live="polite"></div>
+
+      <div id="actorContent" hidden>
+        <article class="profile-card">
+          <div class="profile-photo-wrap">
+            <img id="actorPhoto" class="profile-photo" alt="">
+          </div>
+          <div class="profile-info">
+            <p class="eyebrow">En foco</p>
+            <h2 id="actorName"></h2>
+            <dl class="actor-facts">
+              <div>
+                <dt>Nacimiento</dt>
+                <dd id="actorBirthday">No disponible</dd>
+              </div>
+              <div>
+                <dt>Origen</dt>
+                <dd id="actorPlace">No disponible</dd>
+              </div>
+            </dl>
+            <h3 class="bio-heading">Biografía</h3>
+            <p id="actorBiography" class="biography"></p>
+          </div>
+        </article>
+
+        <section class="filmography-section" aria-labelledby="filmographyTitle">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">Su recorrido</p>
+              <h2 id="filmographyTitle" class="section-title">Películas destacadas</h2>
+            </div>
+            <p class="section-hint">Selecciona una película para explorar su elenco</p>
+          </div>
+          <div id="filmographyStatus" class="status" role="status" aria-live="polite"></div>
+          <div id="filmography" class="movie-grid"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="welcomeMessage" class="welcome-message">
+      <div class="welcome-mark" aria-hidden="true">✦</div>
+      <h2>Tu próxima conexión empieza aquí</h2>
+      <p>Busca un actor para explorar su trayectoria y descubrir quién comparte pantalla con él.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Datos de películas y personas proporcionados por TMDb.</p>
+  </footer>
+
+  <!-- Modal del reparto compartido -->
+  <dialog id="castDialog" class="cast-dialog" aria-labelledby="dialogTitle">
+    <div class="dialog-header">
+      <div>
+        <p class="eyebrow">Una película, muchas conexiones</p>
+        <h2 id="dialogTitle"></h2>
+      </div>
+      <button id="closeDialog" class="close-button" type="button" aria-label="Cerrar elenco">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <p id="castStatus" class="status" role="status" aria-live="polite"></p>
+    <div id="castList" class="cast-grid"></div>
+  </dialog>
+
+  <!-- Botón flotante QR -->
+  <button id="qrFloatBtn" class="qr-float-btn" type="button" aria-label="Compartir con código QR" title="Compartir página">
+    <span aria-hidden="true">📱</span>
+  </button>
+
+  <!-- Modal emergente del QR -->
+  <dialog id="qrDialog" class="qr-dialog">
+    <div class="qr-dialog-content">
+      <button id="closeQrDialog" class="close-button" type="button" aria-label="Cerrar modal">&times;</button>
+      <p class="eyebrow">Escanea y comparte</p>
+      <h3>Abre esta web en tu móvil</h3>
+      <div class="qr-image-wrapper">
+        <img id="qrImage" src="" alt="Código QR para compartir">
+      </div>
+      <p class="qr-hint">Apunta con la cámara de tu celular para abrir CineConexiones al instante.</p>
+    </div>
+  </dialog>
+</body>
+</html>
